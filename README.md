@@ -69,27 +69,46 @@ sudo apt-get update && sudo apt-get install -y \
 
 ## Installation
 
-To make `md2pdf.sh` available as a command from anywhere in your terminal, follow these steps:
+To use `md2pdf` like a regular command from anywhere in your terminal, follow these simple steps. These commands are safe and will only add a new shortcut to your system.
 
-1.  **Move the Script:** Place `md2pdf.sh` in a local script directory.
-    ```bash
-    mkdir -p ~/.local/bin
-    mv md2pdf.sh ~/.local/bin/
-    ```
-2.  **Make it Executable:**
-    ```bash
-    chmod +x ~/.local/bin/md2pdf.sh
-    ```
-3.  **Update your PATH:** Add the script's directory to your shell's configuration file (`~/.bashrc`, `~/.zshrc`, etc.) and create a simple alias.
-    ```bash
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-    echo "alias md2pdf='md2pdf.sh'" >> ~/.bashrc
-    ```
-4.  **Apply the Changes:**
-    ```bash
-    source ~/.bashrc
-    ```
-You can now use the `md2pdf` command from any directory.
+**1. Clone the Repository**
+
+First, download the project into a dedicated directory in your home folder. A common and safe choice is `~/scripts`.
+
+```bash
+# Create the directory (if it doesn't already exist) and enter it.
+mkdir -p ~/scripts
+cd ~/scripts
+
+# Download the project from GitHub into a new "markdown-to-pdf" folder.
+git clone https://github.com/gswelter/markdown-to-pdf.git
+```
+
+**2. Create a Permanent Shortcut (Alias)**
+
+Now, navigate into the project directory you just created.
+
+```bash
+cd markdown-to-pdf
+```
+
+Run the command below. It automatically finds the script's exact location and creates a permanent `md2pdf` shortcut for you.
+
+```bash
+# This command is safe: it simply adds one line of text to the end
+# of your shell's configuration file.
+echo "alias md2pdf='$(pwd)/md2pdf.sh'" >> ~/.bashrc
+```
+
+**3. Activate the New Command**
+
+Finally, apply the changes to your current terminal session.
+
+```bash
+source ~/.bashrc
+```
+
+That's it! You can now run the `md2pdf` command from any directory.
 
 ## License
 
